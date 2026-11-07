@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dodpkqwmggxmu"]
+
+[ext_resource type="Script" uid="uid://dxk7l4sstuf0t" path="res://scripts/target_manager.gd" id="1_hjcqq"]
+[ext_resource type="PackedScene" uid="uid://cvd4x6xhnybu3" path="res://scenes/target.tscn" id="2_tvy65"]
+
+[node name="TargetManager" type="Node2D" unique_id=1780119017]
+script = ExtResource("1_hjcqq")
+target_scene = ExtResource("2_tvy65")
+
+[node name="LaunchFromLeft" type="Marker2D" parent="." unique_id=1639260233]
+position = Vector2(-100, 900)
+
+[node name="LaunchFromRight" type="Marker2D" parent="." unique_id=1451421917]
+position = Vector2(2020, 900)
+
+[node name="Timer" type="Timer" parent="." unique_id=1397766694]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
