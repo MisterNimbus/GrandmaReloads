@@ -25,7 +25,7 @@ weapons = [NodePath("Muzzleloader"), NodePath("Revolver"), NodePath("Shotgun")]
 
 [node name="Muzzleloader" parent="WeaponManager" unique_id=1385624608 instance=ExtResource("3_tbgi4")]
 gun_id = "muzzleloader"
-max_ammo = 1
+max_ammo = 100
 damage = 25
 fire_delay = 0.1
 view_model_straight_texture = ExtResource("9_trceg")
@@ -56,3 +56,8 @@ view_model_right_texture = ExtResource("6_jkv2x")
 crosshair_texture = ExtResource("13_jkv2x")
 sprite_offset = Vector2(0, -50)
 empty_click_sound = ExtResource("6_ya4ey")
+
+[connection signal="gun_fired" from="WeaponManager" to="TargetManager" method="_on_weapon_manager_gun_fired"]
+[connection signal="fired" from="WeaponManager/Muzzleloader" to="WeaponManager" method="_on_muzzleloader_fired"]
+[connection signal="fired" from="WeaponManager/Revolver" to="WeaponManager" method="_on_revolver_fired"]
+[connection signal="fired" from="WeaponManager/Shotgun" to="WeaponManager" method="_on_shotgun_fired"]
