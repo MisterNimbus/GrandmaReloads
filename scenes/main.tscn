@@ -7,9 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dota3moak8gbe" path="res://assets/sprites/placeholders/PlaceholderGun0.png" id="4_tipki"]
 [ext_resource type="AudioStream" uid="uid://b4d2njj7ou714" path="res://assets/sounds/musket-fire.wav" id="5_choun"]
 [ext_resource type="PackedScene" uid="uid://dljxtfngl4m5x" path="res://scenes/shotgun.tscn" id="5_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://d3rk28oanghj7" path="res://assets/sprites/placeholders/Crosshair0.png" id="5_trceg"]
 [ext_resource type="Texture2D" uid="uid://bs2xvqeqnl1lq" path="res://assets/sprites/placeholders/PlaceholderGun1.png" id="6_85g3d"]
 [ext_resource type="AudioStream" uid="uid://che81y00484fy" path="res://assets/sounds/pistol-trigger.mp3" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://dpvuuyitfa86e" path="res://assets/sprites/placeholders/PlaceholderGun2.png" id="8_choun"]
+[ext_resource type="Texture2D" uid="uid://2c7aagkoedke" path="res://assets/sprites/placeholders/Crosshair2.png" id="10_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://demtu3ibckuh1" path="res://assets/sprites/placeholders/Crosshair1.png" id="13_jkv2x"]
 
 [node name="Main" type="Node2D" unique_id=770980598]
 script = ExtResource("1_o5qli")
@@ -23,6 +26,7 @@ max_ammo = 1
 damage = 25
 fire_delay = 0.1
 view_model_texture = ExtResource("4_tipki")
+crosshair_texture = ExtResource("5_trceg")
 sprite_rotation_offset = 90.0
 sprite_offset = Vector2(0, -50)
 shoot_sound = ExtResource("5_choun")
@@ -32,10 +36,16 @@ empty_click_sound = ExtResource("6_ya4ey")
 gun_id = "revolver"
 damage = 20
 view_model_texture = ExtResource("6_85g3d")
+crosshair_texture = ExtResource("10_a8y0u")
 sprite_rotation_offset = 90.0
+sprite_offset = Vector2(0, -50)
+empty_click_sound = ExtResource("6_ya4ey")
 
 [node name="Shotgun" parent="WeaponManager" unique_id=1456038327 instance=ExtResource("5_o6xl0")]
 max_ammo = 5
 damage = 35
 view_model_texture = ExtResource("8_choun")
+crosshair_texture = ExtResource("13_jkv2x")
 sprite_rotation_offset = 90.0
+sprite_offset = Vector2(0, -50)
+empty_click_sound = ExtResource("6_ya4ey")
