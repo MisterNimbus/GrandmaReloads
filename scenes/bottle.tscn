@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://e3itc5mgm56t"]
+
+[ext_resource type="Script" uid="uid://bkuw2vtadac7u" path="res://scripts/bottle.gd" id="1_qr18b"]
+[ext_resource type="Texture2D" uid="uid://depgeujr7lt06" path="res://assets/sprites/placeholders/bottle.png" id="2_emwc0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_emwc0"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+
+[node name="Bottle" type="RigidBody2D" unique_id=1460900559]
+script = ExtResource("1_qr18b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1124563204]
+texture = ExtResource("2_emwc0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=230170483]
+polygon = PackedVector2Array(-17, 55, -11, 61, -3, 63, 9, 62, 16, 55, 16, -29, 6, -41, 7, -57, 2, -61, -4, -61, -5, -40, -17, -30)
+
+[node name="BreakParticles" type="GPUParticles2D" parent="." unique_id=716812115]
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_emwc0")

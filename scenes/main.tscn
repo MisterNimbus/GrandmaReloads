@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dr3pcv0ava1yu" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://7ia44prixhr1" path="res://scenes/weapon_manager.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dodpkqwmggxmu" path="res://scenes/target_manager.tscn" id="2_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://e3itc5mgm56t" path="res://scenes/bottle.tscn" id="3_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dv0ytnabx3ros" path="res://scenes/muzzleloader.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://boiwatkg7igfa" path="res://scenes/revolver.tscn" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://dq4yrw4u6go5i" path="res://assets/sprites/Muzzleloader/left.png" id="5_a8y0u"]
@@ -19,6 +20,7 @@
 script = ExtResource("1_o5qli")
 
 [node name="TargetManager" parent="." unique_id=1780119017 instance=ExtResource("2_a8y0u")]
+target_scene = ExtResource("3_jkv2x")
 
 [node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("weapons") instance=ExtResource("2_0wfyh")]
 weapons = [NodePath("Muzzleloader"), NodePath("Revolver"), NodePath("Shotgun")]
