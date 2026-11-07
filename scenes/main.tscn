@@ -42,6 +42,7 @@ sprite_offset = Vector2(0, -50)
 empty_click_sound = ExtResource("6_ya4ey")
 
 [node name="Shotgun" parent="WeaponManager" unique_id=1456038327 instance=ExtResource("5_o6xl0")]
+gun_id = "shotgun"
 max_ammo = 5
 damage = 35
 view_model_texture = ExtResource("8_choun")
