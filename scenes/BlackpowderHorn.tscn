@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://boar24ijmf2c8"]
+
+[ext_resource type="Script" uid="uid://cqroq4j2b6rtv" path="res://scripts/GunpowderHorn.gd" id="1_qs424"]
+[ext_resource type="Texture2D" uid="uid://cvgh2j3kawhn2" path="res://assets/sprites/BlackpowderHorn.png" id="2_qs424"]
+[ext_resource type="PackedScene" uid="uid://cnuqithxc0hnd" path="res://scenes/gunpowder_particle.tscn" id="2_s003n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s003n"]
+radius = 28.785719
+height = 102.919075
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yap3u"]
+radius = 14.630671
+height = 71.03545
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qs424"]
+radius = 22.57858
+height = 80.98901
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 95.005264
+
+[node name="InteractableItem" type="RigidBody2D" unique_id=1400161391]
+collision_mask = 5
+input_pickable = true
+script = ExtResource("1_qs424")
+particle_scene = ExtResource("2_s003n")
+item_id = "gunpowder"
+hover_name = "gunpowderHorn"
+metadata/_custom_type_script = "uid://cjyg4es61sixk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=134107597]
+texture_filter = 1
+scale = Vector2(2.545, 2.545)
+texture = ExtResource("2_qs424")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=235671218]
+position = Vector2(145, 16)
+rotation = 4.055113
+scale = Vector2(2.9400187, -2.510633)
+shape = SubResource("CapsuleShape2D_s003n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1403490326]
+position = Vector2(-100.99999, 82)
+rotation = -1.2460127
+scale = Vector2(2.9400187, -2.510633)
+shape = SubResource("CapsuleShape2D_yap3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1860242380]
+position = Vector2(29.999996, 80)
+rotation = -1.7141526
+scale = Vector2(2.9125788, -2.5424147)
+shape = SubResource("CapsuleShape2D_qs424")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=911994564]
+position = Vector2(190, -57)
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="Nozzle" type="Marker2D" parent="." unique_id=1802271702]
+position = Vector2(-177, 56)

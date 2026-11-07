@@ -13,6 +13,7 @@ class_name WeaponManager
 @export var next_weapon_action: String = "next_weapon"
 @export var prev_weapon_action: String = "prev_weapon"
 
+var active_minigame: ReloadMinigame
 var active_weapon_index: int = -1
 var current_gun: Gun
 
@@ -28,13 +29,14 @@ func _ready() -> void:
 		weapon.reload_requested.connect(_on_reload_requested)
 		weapon.weapon_switched.connect(_on_weapon_switched)
 		weapon.unequip()
-		
+	
 	equip_weapon(starting_weapon_index)
 
 func _input(event: InputEvent) -> void:
 	if not current_gun: 
 		return
-	
+	if is_instance_valid(active_minigame):
+		return
 	if event.is_action_pressed(shoot_action):
 		current_gun.try_fire()
 	elif event.is_action_pressed(reload_action):
@@ -78,12 +80,31 @@ func _on_out_of_ammo() -> void:
 	# Trigger UI elements (e.g., flashing "PRESS R")
 	pass
 
-func _on_reload_requested(gun_id: String) -> void:
-	# 1. Pause the game tree
-	# 2. Instance/Show your manual reload minigame screen
-	# 3. Pass the 'gun_id' to the screen so it loads the correct bullets/animations
-	pass
+func _on_reload_requested(_gun_id: String) -> void:
+	if is_instance_valid(active_minigame):
+		return
+		
+	if current_gun.reload_minigame_scene:        
+		active_minigame = current_gun.reload_minigame_scene.instantiate()
+		add_child(active_minigame)
+		
+		# Connect both signals
+		active_minigame.reload_finished.connect(_on_minigame_finished)
+		active_minigame.minigame_closed.connect(_close_minigame) # Triggers early exit
+	else:
+		push_warning("No minigame assigned to " + current_gun.name)
+
+func _on_minigame_finished() -> void:
+	current_gun.complete_reload() 
+	_close_minigame()
 
 func _on_weapon_switched(crosshair: Texture2D) -> void:
 	if crosshair:
 		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, crosshair.get_size() / 2.0)
+
+func _close_minigame() -> void:
+	get_tree().paused = false 
+	
+	if is_instance_valid(active_minigame):
+		active_minigame.queue_free()
+		active_minigame = null

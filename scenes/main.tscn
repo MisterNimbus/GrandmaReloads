@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://7ia44prixhr1" path="res://scenes/weapon_manager.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dv0ytnabx3ros" path="res://scenes/muzzleloader.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://boiwatkg7igfa" path="res://scenes/revolver.tscn" id="4_tefeu"]
-[ext_resource type="Texture2D" uid="uid://dota3moak8gbe" path="res://assets/sprites/placeholders/PlaceholderGun0.png" id="4_tipki"]
 [ext_resource type="AudioStream" uid="uid://b4d2njj7ou714" path="res://assets/sounds/musket-fire.wav" id="5_choun"]
 [ext_resource type="PackedScene" uid="uid://dljxtfngl4m5x" path="res://scenes/shotgun.tscn" id="5_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://d3rk28oanghj7" path="res://assets/sprites/placeholders/Crosshair0.png" id="5_trceg"]
 [ext_resource type="Texture2D" uid="uid://bs2xvqeqnl1lq" path="res://assets/sprites/placeholders/PlaceholderGun1.png" id="6_85g3d"]
 [ext_resource type="AudioStream" uid="uid://che81y00484fy" path="res://assets/sounds/pistol-trigger.mp3" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://dpvuuyitfa86e" path="res://assets/sprites/placeholders/PlaceholderGun2.png" id="8_choun"]
@@ -18,16 +16,13 @@
 script = ExtResource("1_o5qli")
 
 [node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("weapons") instance=ExtResource("2_0wfyh")]
-weapons = [NodePath("Muzzleloader"), NodePath("Revolver"), NodePath("Shotgun")]
+weapons = [NodePath("Muzzleloader"), NodePath("Shotgun"), NodePath("Revolver")]
 
 [node name="Muzzleloader" parent="WeaponManager" unique_id=1385624608 instance=ExtResource("3_tbgi4")]
 gun_id = "muzzleloader"
 max_ammo = 1
 damage = 25
 fire_delay = 0.1
-view_model_texture = ExtResource("4_tipki")
-crosshair_texture = ExtResource("5_trceg")
-sprite_rotation_offset = 90.0
 sprite_offset = Vector2(0, -50)
 shoot_sound = ExtResource("5_choun")
 empty_click_sound = ExtResource("6_ya4ey")
@@ -50,3 +45,7 @@ crosshair_texture = ExtResource("13_jkv2x")
 sprite_rotation_offset = 90.0
 sprite_offset = Vector2(0, -50)
 empty_click_sound = ExtResource("6_ya4ey")
+
+[node name="TooltipLabel" type="Label" parent="." unique_id=725458332]
+offset_right = 40.0
+offset_bottom = 23.0

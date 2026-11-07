@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://dv0ytnabx3ros"]
 
 [ext_resource type="Script" uid="uid://c2vbs05oxey3u" path="res://scripts/muzzleloader.gd" id="1_u8q5l"]
+[ext_resource type="Texture2D" uid="uid://dota3moak8gbe" path="res://assets/sprites/placeholders/PlaceholderGun0.png" id="2_op8fw"]
+[ext_resource type="Texture2D" uid="uid://d3rk28oanghj7" path="res://assets/sprites/placeholders/Crosshair0.png" id="3_f0mie"]
+[ext_resource type="PackedScene" uid="uid://ci6rhe1fduwba" path="res://scenes/musket_reload_minigame.tscn" id="4_uh4kc"]
 
 [node name="Muzzleloader" type="Node2D" unique_id=1385624608]
 script = ExtResource("1_u8q5l")
+view_model_texture = ExtResource("2_op8fw")
+crosshair_texture = ExtResource("3_f0mie")
+sprite_rotation_offset = 90.0
+reload_minigame_scene = ExtResource("4_uh4kc")

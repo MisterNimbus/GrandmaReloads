@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cnuqithxc0hnd"]
+
+[ext_resource type="Texture2D" uid="uid://y4d8608e3dn1" path="res://assets/sprites/BlackpowderGranule.png" id="1_i81kv"]
+[ext_resource type="Script" uid="uid://su57x1x6qhne" path="res://scripts/GunpowderParticle.gd" id="1_pki8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 8.0
+
+[node name="GunpowderParticle" type="RigidBody2D" unique_id=115521407]
+collision_layer = 2
+collision_mask = 6
+mass = 0.013
+script = ExtResource("1_pki8j")
+item_id = "gunpowder_particle"
+hover_name = "gunpowder_particle"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022480734]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_i81kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1732439836]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1902794221]

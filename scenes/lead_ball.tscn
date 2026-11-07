@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cstv0unitkrme"]
+
+[ext_resource type="Script" uid="uid://cjyg4es61sixk" path="res://scripts/interactableItem.gd" id="1_5f3ch"]
+[ext_resource type="Texture2D" uid="uid://defv31us232gr" path="res://assets/sprites/MusketBullet.png" id="2_mtrnn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 32.01562
+
+[node name="LeadBall" type="RigidBody2D" unique_id=1737705226]
+collision_mask = 5
+input_pickable = true
+mass = 0.055
+script = ExtResource("1_5f3ch")
+item_id = "lead_ball"
+hover_name = "Lead Ball"
+metadata/_custom_type_script = "uid://cjyg4es61sixk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012645345]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055183210]
+texture = ExtResource("2_mtrnn")

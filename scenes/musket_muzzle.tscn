@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cq6wla27ijjfd"]
+
+[ext_resource type="Texture2D" uid="uid://c7bfeonu48ocp" path="res://assets/sprites/MuzzleMusket.png" id="1_y7pp8"]
+[ext_resource type="Script" uid="uid://bmklwvavcel03" path="res://scripts/muzzle_zone.gd" id="2_oq534"]
+[ext_resource type="Texture2D" uid="uid://5exypmhva2iy" path="res://assets/sprites/MuzzleMusketFrontHalf.png" id="3_rl8aq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl8aq"]
+radius = 21.138824
+height = 73.96228
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
+radius = 5.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq534"]
+radius = 2.3199196
+height = 33.99997
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58me5"]
+radius = 4.1191235
+height = 47.469738
+
+[node name="MusketMuzzle" type="Node2D" unique_id=233591302]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=456224325]
+texture_filter = 1
+texture = ExtResource("1_y7pp8")
+
+[node name="MuzzleZone" type="Area2D" parent="." unique_id=1251156940]
+position = Vector2(0, -11)
+collision_mask = 3
+input_pickable = false
+script = ExtResource("2_oq534")
+accepted_item_ids = Array[String](["lead_ball"])
+require_drop = false
+metadata/_custom_type_script = "uid://bmklwvavcel03"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MuzzleZone" unique_id=1310518708]
+position = Vector2(-1.0000002, 18.000004)
+rotation = 3.1237755
+shape = SubResource("CapsuleShape2D_rl8aq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1335516542]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1389043793]
+position = Vector2(17, 55)
+rotation = 0.0497557
+shape = SubResource("CapsuleShape2D_bhunq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=850625011]
+position = Vector2(4.0000005, 108)
+rotation = 3.0313127
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=953119705]
+position = Vector2(17, 55)
+rotation = 0.0497557
+shape = SubResource("CapsuleShape2D_bhunq")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1913662004]
+position = Vector2(-35.000004, -57.999996)
+rotation = -0.3408757
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=671891023]
+position = Vector2(0.63669264, -16.750961)
+rotation = -0.1504905
+shape = SubResource("CapsuleShape2D_oq534")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=652717477]
+position = Vector2(28, -60)
+rotation = 0.6648459
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1407853891]
+position = Vector2(0.63669264, -16.750961)
+rotation = -0.1504905
+shape = SubResource("CapsuleShape2D_oq534")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=988292688]
+position = Vector2(28, -60)
+rotation = 0.6648459
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=1517795788]
+position = Vector2(11.998608, 18.548138)
+rotation = -0.46277153
+shape = SubResource("CapsuleShape2D_58me5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D5" unique_id=12485478]
+position = Vector2(-30.32996, 50.45883)
+rotation = -0.80986065
+shape = SubResource("CapsuleShape2D_58me5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=266221483]
+z_index = 7
+texture_filter = 1
+texture = ExtResource("3_rl8aq")

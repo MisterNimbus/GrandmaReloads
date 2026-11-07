@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://ci6rhe1fduwba"]
+
+[ext_resource type="Script" uid="uid://43p6ggc11jjc" path="res://scripts/muzzle_minigame.gd" id="1_srps1"]
+[ext_resource type="Texture2D" uid="uid://dkpgovahbbubj" path="res://assets/sprites/TableBoard.png" id="2_srps1"]
+[ext_resource type="Texture2D" uid="uid://c7bfeonu48ocp" path="res://assets/sprites/MuzzleMusket.png" id="3_bu1o3"]
+[ext_resource type="PackedScene" uid="uid://cstv0unitkrme" path="res://scenes/lead_ball.tscn" id="3_srps1"]
+[ext_resource type="Script" uid="uid://bmklwvavcel03" path="res://scripts/muzzle_zone.gd" id="4_qiea7"]
+[ext_resource type="Texture2D" uid="uid://5exypmhva2iy" path="res://assets/sprites/MuzzleMusketFrontHalf.png" id="5_bual5"]
+[ext_resource type="PackedScene" uid="uid://boar24ijmf2c8" path="res://scenes/BlackpowderHorn.tscn" id="5_srps1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl8aq"]
+radius = 21.138824
+height = 73.96228
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
+radius = 5.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq534"]
+radius = 2.3199196
+height = 33.99997
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58me5"]
+radius = 4.1191235
+height = 47.469738
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tg8xp"]
+distance = 19.0
+
+[node name="MuzzleMinigame" type="CanvasLayer" unique_id=2138248451 node_paths=PackedStringArray("instruction_label")]
+script = ExtResource("1_srps1")
+instruction_label = NodePath("Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=377346976]
+position = Vector2(961.00006, 1023)
+scale = Vector2(1.890625, 1.890625)
+texture = ExtResource("2_srps1")
+
+[node name="MusketMuzzle" type="Node2D" parent="." unique_id=233591302]
+position = Vector2(552, 835.00006)
+rotation = 0.15533431
+scale = Vector2(2.87, 2.87)
+
+[node name="Sprite2D" type="Sprite2D" parent="MusketMuzzle" unique_id=456224325]
+texture_filter = 1
+texture = ExtResource("3_bu1o3")
+
+[node name="MuzzleZone" type="Area2D" parent="MusketMuzzle" unique_id=1251156940]
+position = Vector2(0, -11)
+collision_mask = 3
+input_pickable = false
+script = ExtResource("4_qiea7")
+accepted_item_ids = Array[String](["lead_ball"])
+require_drop = false
+metadata/_custom_type_script = "uid://bmklwvavcel03"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/MuzzleZone" unique_id=1310518708]
+position = Vector2(-1.0000002, 18.000004)
+rotation = 3.1237755
+shape = SubResource("CapsuleShape2D_rl8aq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MusketMuzzle" unique_id=1335516542]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D" unique_id=1389043793]
+position = Vector2(17, 55)
+rotation = 0.0497557
+shape = SubResource("CapsuleShape2D_bhunq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="MusketMuzzle" unique_id=850625011]
+position = Vector2(4.0000005, 108)
+rotation = 3.0313127
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D2" unique_id=953119705]
+position = Vector2(17, 55)
+rotation = 0.0497557
+shape = SubResource("CapsuleShape2D_bhunq")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="MusketMuzzle" unique_id=1913662004]
+position = Vector2(-35.000004, -57.999996)
+rotation = -0.3408757
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D3" unique_id=671891023]
+position = Vector2(0.63669264, -16.750961)
+rotation = -0.1504905
+shape = SubResource("CapsuleShape2D_oq534")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="MusketMuzzle" unique_id=652717477]
+position = Vector2(28, -60)
+rotation = 0.6648459
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D4" unique_id=1407853891]
+position = Vector2(0.63669264, -16.750961)
+rotation = -0.1504905
+shape = SubResource("CapsuleShape2D_oq534")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="MusketMuzzle" unique_id=988292688]
+position = Vector2(28, -60)
+rotation = 0.6648459
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D5" unique_id=1517795788]
+position = Vector2(11.998608, 18.548138)
+rotation = -0.46277153
+shape = SubResource("CapsuleShape2D_58me5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MusketMuzzle/StaticBody2D5" unique_id=12485478]
+position = Vector2(-30.32996, 50.45883)
+rotation = -0.80986065
+shape = SubResource("CapsuleShape2D_58me5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MusketMuzzle" unique_id=266221483]
+z_index = 7
+texture_filter = 1
+texture = ExtResource("5_bual5")
+
+[node name="LeadBall" parent="." unique_id=1737705226 instance=ExtResource("3_srps1")]
+position = Vector2(1126, 980)
+
+[node name="BottomBoundary" type="StaticBody2D" parent="." unique_id=2008925532]
+position = Vector2(0, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=1685201586]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="BottomBoundary3" type="StaticBody2D" parent="." unique_id=115196802]
+position = Vector2(0, 1080)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary3" unique_id=738635804]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="BottomBoundary2" type="StaticBody2D" parent="." unique_id=1831565558]
+position = Vector2(1920, 1080)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary2" unique_id=74327334]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="Label" type="Label" parent="." unique_id=731067017]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.0035979, 1.0251516)
+theme_override_font_sizes/font_size = 77
+text = "Test"
+
+[node name="InteractableItem" parent="." unique_id=1400161391 instance=ExtResource("5_srps1")]
+position = Vector2(1486, 686)

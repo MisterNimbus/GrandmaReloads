@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cmd0qcsuaw636"]
+
+[ext_resource type="Script" uid="uid://bmklwvavcel03" path="res://scripts/muzzle_zone.gd" id="1_k5vvw"]
+
+[node name="MuzzleZone" type="Area2D" unique_id=1651755438]
+script = ExtResource("1_k5vvw")
+metadata/_custom_type_script = "uid://da6gay8p36jfb"

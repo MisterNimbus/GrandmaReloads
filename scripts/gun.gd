@@ -24,6 +24,9 @@ signal weapon_switched(crosshair: Texture2D)
 @export var shoot_sound: AudioStream
 @export var empty_click_sound: AudioStream
 
+@export_category("Reloading")
+@export var reload_minigame_scene: PackedScene
+
 var current_ammo: int
 var can_shoot: bool = true
 
@@ -35,7 +38,7 @@ func _ready() -> void:
 	
 	# 1. Lock the gun's root position to the bottom center of the screen
 	var screen_size = get_viewport_rect().size
-	global_position = Vector2(screen_size.x / 2.0, screen_size.y - 150)
+	global_position = Vector2(screen_size.x / 2.0, screen_size.y)
 	
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)

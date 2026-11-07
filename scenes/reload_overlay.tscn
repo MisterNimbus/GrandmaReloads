@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b3nv7qdhk6whp"]
+
+[ext_resource type="PackedScene" uid="uid://cq6wla27ijjfd" path="res://scenes/musket_muzzle.tscn" id="1_5oy4o"]
+[ext_resource type="Script" uid="uid://0hwtoegoccpw" path="res://scripts/reload_overlay.gd" id="1_jpnxk"]
+[ext_resource type="PackedScene" uid="uid://cstv0unitkrme" path="res://scenes/lead_ball.tscn" id="2_jpnxk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tg8xp"]
+
+[node name="ReloadOverlay" type="CanvasLayer" unique_id=2138248451]
+script = ExtResource("1_jpnxk")
+
+[node name="MusketMuzzle" parent="." unique_id=233591302 instance=ExtResource("1_5oy4o")]
+position = Vector2(552, 835.00006)
+rotation = 0.15533431
+scale = Vector2(2.87, 2.87)
+
+[node name="BottomBoundary" type="StaticBody2D" parent="." unique_id=2008925532]
+position = Vector2(0, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=1685201586]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="BottomBoundary3" type="StaticBody2D" parent="." unique_id=115196802]
+position = Vector2(0, 1080)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary3" unique_id=738635804]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="BottomBoundary2" type="StaticBody2D" parent="." unique_id=1831565558]
+position = Vector2(1920, 1080)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary2" unique_id=74327334]
+shape = SubResource("WorldBoundaryShape2D_tg8xp")
+
+[node name="LeadBall" parent="." unique_id=1737705226 instance=ExtResource("2_jpnxk")]
+position = Vector2(639, 177)
+hover_name = "Lead Ball"
+
+[node name="LeadBall2" parent="." unique_id=17942678 instance=ExtResource("2_jpnxk")]
+position = Vector2(1681, 277)
+hover_name = "Bullet"
