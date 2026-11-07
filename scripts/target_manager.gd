@@ -23,3 +23,16 @@ func _spawn_target():
 func _on_timer_timeout() -> void:
 	_spawn_target()
 	timer.start(randf_range(0.5, 2.0))
+
+
+func _on_weapon_manager_gun_fired(damage: int, spread_radius: float) -> void:
+	var query := PhysicsPointQueryParameters2D.new()
+	query.position = get_global_mouse_position()
+	
+	var hits := get_world_2d().direct_space_state.intersect_point(query)
+	
+	for result in hits:
+		var target = result.collider
+		if target.has_method("hit"):
+			target.hit(damage)
+			break
