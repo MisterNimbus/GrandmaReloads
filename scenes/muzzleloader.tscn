@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dv0ytnabx3ros"]
+
+[ext_resource type="Script" uid="uid://c2vbs05oxey3u" path="res://scripts/muzzleloader.gd" id="1_u8q5l"]
+
+[node name="Muzzleloader" type="Node2D" unique_id=1385624608]
+script = ExtResource("1_u8q5l")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://boiwatkg7igfa"]
+
+[ext_resource type="Script" uid="uid://b2owyd1suqd04" path="res://scripts/revolver.gd" id="1_37vaw"]
+
+[node name="Revolver" type="Node2D" unique_id=104171618]
+script = ExtResource("1_37vaw")
