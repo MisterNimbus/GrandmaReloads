@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvd4x6xhnybu3"]
+
+[ext_resource type="Script" uid="uid://c4nerpqu24xbu" path="res://scripts/target.gd" id="1_b5a2r"]
+[ext_resource type="Texture2D" uid="uid://b8knurwug20ci" path="res://assets/sprites/placeholders/target.png" id="1_b37e2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sep2p"]
+radius = 32.01562
+
+[node name="Target" type="RigidBody2D" unique_id=414968186]
+collision_layer = 8
+collision_mask = 8
+input_pickable = true
+script = ExtResource("1_b5a2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=359401247]
+texture_filter = 1
+texture = ExtResource("1_b37e2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1251967564]
+shape = SubResource("CircleShape2D_sep2p")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

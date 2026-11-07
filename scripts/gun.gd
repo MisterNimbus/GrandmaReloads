@@ -13,10 +13,12 @@ signal weapon_switched(crosshair: Texture2D)
 @export var fire_delay: float = 0.5 
 
 @export_category("Visuals")
-@export var view_model_texture: Texture2D 
+@export var view_model_straight_texture: Texture2D
+@export var view_model_left_texture: Texture2D
+@export var view_model_right_texture: Texture2D
 @export var crosshair_texture: Texture2D 
 ## If your gun sprite is drawn facing UP instead of RIGHT, set this to 90 degrees
-@export var sprite_rotation_offset: float = 0.0
+@export var sprite_rotation_offset: float = 90.0
 ## Shifts the sprite so it rotates from the stock/grip rather than the center
 @export var sprite_offset: Vector2 = Vector2.ZERO
 
@@ -46,8 +48,8 @@ func _ready() -> void:
 	sprite = Sprite2D.new()
 	add_child(sprite)
 	
-	if view_model_texture:
-		sprite.texture = view_model_texture
+	if view_model_straight_texture:
+		sprite.texture = view_model_straight_texture
 		sprite.offset = sprite_offset
 		sprite.rotation_degrees = sprite_rotation_offset
 
@@ -56,6 +58,17 @@ func _process(delta: float) -> void:
 	if visible:
 		# look_at rotates the node's X-axis to point at the coordinate
 		look_at(get_global_mouse_position())
+		
+	if abs(global_rotation_degrees) > 100:
+		sprite.texture = view_model_left_texture
+	elif abs(global_rotation_degrees) < 80:
+		sprite.texture = view_model_right_texture
+	else:
+		sprite.texture = view_model_straight_texture
+		
+		
+		
+
 
 func equip() -> void:
 	show()

@@ -1,6 +1,8 @@
 extends Node2D
 class_name WeaponManager
 
+signal gun_fired(damage: int, spread_radius: float)
+
 @export_category("Weapon Setup")
 ## Expand this array in the Inspector and drag your Gun nodes here
 @export var weapons: Array[Gun] = []
@@ -108,3 +110,12 @@ func _close_minigame() -> void:
 	if is_instance_valid(active_minigame):
 		active_minigame.queue_free()
 		active_minigame = null
+
+func _on_muzzleloader_fired(damage: int, spread_radius: float) -> void:
+	gun_fired.emit(damage, spread_radius)
+
+func _on_revolver_fired(damage: int, spread_radius: float) -> void:
+	gun_fired.emit(damage, spread_radius)
+
+func _on_shotgun_fired(damage: int, spread_radius: float) -> void:
+	gun_fired.emit(damage, spread_radius)
