@@ -21,7 +21,8 @@ script = ExtResource("1_qr18b")
 texture = ExtResource("2_emwc0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=230170483]
-polygon = PackedVector2Array(-17, 55, -11, 61, -3, 63, 9, 62, 16, 55, 16, -29, 6, -41, 7, -57, 2, -61, -4, -61, -5, -40, -17, -30)
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(-22, 53, -16, 63, -5, 68, 11, 67, 22, 60, 23, -28, 14, -41, 14, -61, 0, -66, -11, -61, -13, -42, -23, -29)
 
 [node name="BreakParticles" type="GPUParticles2D" parent="." unique_id=716812115]
 emitting = false
@@ -29,3 +30,8 @@ amount = 12
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_emwc0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2120772157]
+rect = Rect2(-130, -136, 262, 258)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

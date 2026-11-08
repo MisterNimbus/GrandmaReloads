@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn6m8t36jw2q8"
+path="res://.godot/imported/musket-fire2.mp3-d2709aa690193a60205640f19bdc8cce.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Musket Fires/musket-fire2.mp3"
+dest_files=["res://.godot/imported/musket-fire2.mp3-d2709aa690193a60205640f19bdc8cce.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

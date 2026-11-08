@@ -2,8 +2,13 @@ extends Target
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 @onready var break_particles: GPUParticles2D = $BreakParticles
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 var broken := false
+
+func _ready() -> void:	
+	# Delete the particle when it falls off the bottom of the screen
+	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
 
 func hit(damage: float) -> void:
 	if broken:
