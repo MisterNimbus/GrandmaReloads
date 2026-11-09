@@ -35,7 +35,7 @@ stream_6/stream = ExtResource("16_2wyq8")
 [node name="Main" type="Node2D" unique_id=770980598]
 script = ExtResource("1_o5qli")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1611286441]
+[node name="Background" type="TextureRect" parent="." unique_id=1611286441]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,8 +51,7 @@ stretch_mode = 3
 [node name="TargetManager" parent="." unique_id=1780119017 instance=ExtResource("2_a8y0u")]
 target_scene = ExtResource("3_jkv2x")
 
-[node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("texture_rect", "weapons") instance=ExtResource("2_0wfyh")]
-texture_rect = NodePath("../TextureRect")
+[node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("weapons") instance=ExtResource("2_0wfyh")]
 weapons = [NodePath("Muzzleloader"), NodePath("Shotgun"), NodePath("Revolver")]
 
 [node name="Muzzleloader" parent="WeaponManager" unique_id=1385624608 instance=ExtResource("3_tbgi4")]
@@ -64,6 +63,7 @@ view_model_straight_texture = ExtResource("9_trceg")
 view_model_left_texture = ExtResource("5_a8y0u")
 view_model_right_texture = ExtResource("6_jkv2x")
 crosshair_texture = ExtResource("13_jkv2x")
+sprite_rotation_offset = null
 sprite_offset = Vector2(0, -50)
 shoot_sound = SubResource("AudioStreamRandomizer_a8y0u")
 empty_click_sound = ExtResource("6_ya4ey")

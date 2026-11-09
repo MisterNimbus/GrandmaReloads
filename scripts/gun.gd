@@ -5,9 +5,6 @@ signal fired(damage: int, spread_radius: float)
 signal out_of_ammo
 signal reload_requested(gun_id: String)
 signal weapon_switched(crosshair: Texture2D)
-@export var texture_rect: TextureRect
-
-
 
 @export_category("Gun Stats")
 @export var gun_id: String = "base_gun"
@@ -38,9 +35,6 @@ var can_shoot: bool = true
 var audio_player: AudioStreamPlayer
 var sprite: Sprite2D
 
-
-
-
 func _ready() -> void:
 	current_ammo = max_ammo
 	
@@ -48,36 +42,24 @@ func _ready() -> void:
 	var screen_size = get_viewport_rect().size
 	global_position = Vector2(screen_size.x / 2.0, screen_size.y)
 	
-	
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
 	
 	sprite = Sprite2D.new()
 	add_child(sprite)
 	
-
-	
 	if view_model_straight_texture:
 		sprite.texture = view_model_straight_texture
 		sprite.offset = sprite_offset
 		sprite.rotation_degrees = sprite_rotation_offset
-		
-		
-	if texture_rect:
-		var centered_x: float = (get_viewport_rect().size.x - texture_rect.size.x) / 2.0
-		var centered_y: float = (get_viewport_rect().size.y - texture_rect.size.y) / 2.0
-		texture_rect.position.x = centered_x
-		texture_rect.position.y = centered_y
 
 # Track the mouse every frame
 func _process(delta: float) -> void:
-	
 	if not is_visible_in_tree():
 		return
 	
 	look_at(get_global_mouse_position())
 	
-		
 	if abs(global_rotation_degrees) > 100:
 		sprite.texture = view_model_left_texture
 
@@ -86,20 +68,6 @@ func _process(delta: float) -> void:
 	else:
 		sprite.texture = view_model_straight_texture
 		
-	
-	
-	
-	if texture_rect:
-		var centered_x: float = (get_viewport_rect().size.x - texture_rect.size.x) / 2.0
-		var centered_y: float = (get_viewport_rect().size.y - texture_rect.size.y) / 2.0
-		var background_offset = ((abs(global_rotation_degrees) - 90) / 90 ) * 36
-		texture_rect.position.x = centered_x + background_offset
-		texture_rect.position.y = centered_y - abs(background_offset)
-		
-		
-		
-
-
 func equip() -> void:
 	show()
 	weapon_switched.emit(crosshair_texture)

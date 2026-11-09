@@ -1,7 +1,6 @@
 extends Gun
 class_name MuzzleLoader
 
-
 func _init() -> void:
 	gun_id = "muzzle_loader"
 	max_ammo = 1
