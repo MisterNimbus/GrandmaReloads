@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://7kl4bmcb56rf" path="res://assets/sounds/Musket Fires/musket-fire4.mp3" id="14_y6deb"]
 [ext_resource type="AudioStream" uid="uid://dhnp0uyoda5eg" path="res://assets/sounds/Musket Fires/musket-fire5.mp3" id="15_og1vs"]
 [ext_resource type="AudioStream" uid="uid://vfnmd0kgu3yg" path="res://assets/sounds/Musket Fires/musket-fire6.mp3" id="16_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://got676v7pv7o" path="res://assets/sprites/background.png" id="21_yc10j"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a8y0u"]
 streams_count = 7
@@ -34,10 +35,24 @@ stream_6/stream = ExtResource("16_2wyq8")
 [node name="Main" type="Node2D" unique_id=770980598]
 script = ExtResource("1_o5qli")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1611286441]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2048.0
+offset_bottom = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("21_yc10j")
+expand_mode = 1
+stretch_mode = 3
+
 [node name="TargetManager" parent="." unique_id=1780119017 instance=ExtResource("2_a8y0u")]
 target_scene = ExtResource("3_jkv2x")
 
-[node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("weapons") instance=ExtResource("2_0wfyh")]
+[node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("texture_rect", "weapons") instance=ExtResource("2_0wfyh")]
+texture_rect = NodePath("../TextureRect")
 weapons = [NodePath("Muzzleloader"), NodePath("Shotgun"), NodePath("Revolver")]
 
 [node name="Muzzleloader" parent="WeaponManager" unique_id=1385624608 instance=ExtResource("3_tbgi4")]

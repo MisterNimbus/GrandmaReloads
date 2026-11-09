@@ -2,6 +2,7 @@ extends Node2D
 class_name WeaponManager
 
 signal gun_fired(damage: int, spread_radius: float)
+@export var texture_rect: TextureRect
 
 @export_category("Weapon Setup")
 ## Expand this array in the Inspector and drag your Gun nodes here
@@ -26,6 +27,7 @@ func _ready() -> void:
 
 	# Loop through the assigned weapons to connect signals and hide them
 	for weapon in weapons:
+		weapon.texture_rect = texture_rect
 		weapon.fired.connect(_on_gun_fired)
 		weapon.out_of_ammo.connect(_on_out_of_ammo)
 		weapon.reload_requested.connect(_on_reload_requested)
