@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dodpkqwmggxmu"]
 
 [ext_resource type="Script" uid="uid://dxk7l4sstuf0t" path="res://scripts/targetManager.gd" id="1_hjcqq"]
-[ext_resource type="PackedScene" uid="uid://cvd4x6xhnybu3" path="res://scenes/target.tscn" id="2_tvy65"]
+[ext_resource type="PackedScene" uid="uid://e3itc5mgm56t" path="res://scenes/bottle.tscn" id="2_xh8q3"]
+[ext_resource type="PackedScene" uid="uid://bwk8aako4qr4f" path="res://scenes/drone.tscn" id="3_wn3qo"]
 
 [node name="TargetManager" type="Node2D" unique_id=1780119017]
 script = ExtResource("1_hjcqq")
-target_scene = ExtResource("2_tvy65")
+bottle_scene = ExtResource("2_xh8q3")
+drone_scene = ExtResource("3_wn3qo")
 
 [node name="LeftTopSpawn" type="Marker2D" parent="." unique_id=1639260233]
 position = Vector2(-100, 270)
@@ -25,7 +27,13 @@ position = Vector2(2020, 540)
 [node name="RightBottomSpawn" type="Marker2D" parent="." unique_id=1451421917]
 position = Vector2(2020, 810)
 
-[node name="Timer" type="Timer" parent="." unique_id=1397766694]
+[node name="Bottle_Timer" type="Timer" parent="." unique_id=1397766694]
+wait_time = 2.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Drone_Timer" type="Timer" parent="." unique_id=842153914]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Bottle_Timer" to="." method="_on_bottle_timer_timeout"]
+[connection signal="timeout" from="Drone_Timer" to="." method="_on_drone_timer_timeout"]

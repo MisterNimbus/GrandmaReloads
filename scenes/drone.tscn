@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bwk8aako4qr4f"]
+
+[ext_resource type="Script" uid="uid://8ftxwu2f8f64" path="res://scripts/drone.gd" id="1_knnud"]
+[ext_resource type="Texture2D" uid="uid://c7t3esa2ecbsm" path="res://icon.svg" id="2_knnud"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_emwc0"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+
+[node name="Drone" type="RigidBody2D" unique_id=1460900559]
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+script = ExtResource("1_knnud")
+flight_speed = 600.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1124563204]
+texture = ExtResource("2_knnud")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=230170483]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(-59, -57, -59, 56, 62, 57, 62, -58)
+
+[node name="BreakParticles" type="GPUParticles2D" parent="." unique_id=716812115]
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_emwc0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2120772157]
+rect = Rect2(-130, -136, 262, 258)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

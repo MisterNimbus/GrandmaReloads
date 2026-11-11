@@ -6,6 +6,9 @@ extends Target
 
 var broken := false
 
+func _init() -> void:
+	target_type = TargetType.BOTTLE
+
 func _ready() -> void:	
 	# Delete the particle when it falls off the bottom of the screen
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
@@ -23,7 +26,7 @@ func hit(damage: float) -> void:
 	await break_particles.finished
 	queue_free()
 
-func spawn(direction):
+func throw_bottle(direction):
 	linear_velocity = Vector2(
 		direction * randf_range(500, 1200),
 		 -1 * randf_range(500, 1200)

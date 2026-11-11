@@ -1,8 +1,10 @@
+class_name Main
 extends Node
 @onready var tooltip_label: Label = $TooltipLabel
 @onready var background: TextureRect = $Background
 @onready var viewport_rect: Rect2 = background.get_viewport_rect()
 
+const PLAYFIELD := Rect2(0,0, 1920, 1080)
 var initial_background_center: Vector2
 
 func _ready() -> void:
