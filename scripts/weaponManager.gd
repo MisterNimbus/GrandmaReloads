@@ -20,11 +20,19 @@ var active_weapon_index: int = -1
 var current_gun: Gun
 
 func _ready() -> void:
+	# 1. Clean the array to permanently remove any <empty> slots left in the Inspector
+	var valid_weapons: Array[Gun] = []
+	for weapon in weapons:
+		if is_instance_valid(weapon):
+			valid_weapons.append(weapon)
+			
+	weapons = valid_weapons
+
 	if weapons.is_empty():
-		push_warning("WeaponManager has no weapons assigned!")
+		push_warning("WeaponManager has no valid weapons assigned!")
 		return
 
-	# Loop through the assigned weapons to connect signals and hide them
+	# 2. Connect signals and hide all weapons initially
 	for weapon in weapons:
 		weapon.fired.connect(_on_gun_fired)
 		weapon.out_of_ammo.connect(_on_out_of_ammo)
@@ -32,13 +40,16 @@ func _ready() -> void:
 		weapon.weapon_switched.connect(_on_weapon_switched)
 		weapon.unequip()
 	
+	# 3. Safely clamp the starting index so it can never be out of bounds
+	starting_weapon_index = clampi(starting_weapon_index, 0, weapons.size() - 1)
 	equip_weapon(starting_weapon_index)
 
 func _input(event: InputEvent) -> void:
-	if not current_gun: 
+	if not is_instance_valid(current_gun): 
 		return
 	if is_instance_valid(active_minigame):
 		return
+		
 	if event.is_action_pressed(shoot_action):
 		current_gun.try_fire()
 	elif event.is_action_pressed(reload_action):
@@ -64,19 +75,27 @@ func _switch_weapon(direction: int) -> void:
 	equip_weapon(new_index)
 
 func equip_weapon(index: int) -> void:
+	# Safety check: Does this index actually exist?
+	if index < 0 or index >= weapons.size():
+		return
+		
+	var next_gun = weapons[index]
+	if not is_instance_valid(next_gun):
+		return
+
 	# Hide the old gun before swapping
-	if active_weapon_index != -1 and current_gun:
+	if active_weapon_index != -1 and is_instance_valid(current_gun):
 		current_gun.unequip()
 		
 	active_weapon_index = index
-	current_gun = weapons[active_weapon_index]
+	current_gun = next_gun
 	current_gun.equip()
 
 # --- Signal Callbacks ---
 
 func _on_gun_fired(damage: int, spread: float) -> void:
-	# Your hit detection logic goes here
-	pass
+	# Emit the manager's signal so your hit detection / level script can process the shot
+	gun_fired.emit(damage, spread)
 
 func _on_out_of_ammo() -> void:
 	# Trigger UI elements (e.g., flashing "PRESS R")
@@ -97,7 +116,8 @@ func _on_reload_requested(_gun_id: String) -> void:
 		push_warning("No minigame assigned to " + current_gun.name)
 
 func _on_minigame_finished() -> void:
-	current_gun.complete_reload() 
+	if is_instance_valid(current_gun):
+		current_gun.complete_reload() 
 	_close_minigame()
 
 func _on_weapon_switched(crosshair: Texture2D) -> void:
@@ -110,12 +130,3 @@ func _close_minigame() -> void:
 	if is_instance_valid(active_minigame):
 		active_minigame.queue_free()
 		active_minigame = null
-
-func _on_muzzleloader_fired(damage: int, spread_radius: float) -> void:
-	gun_fired.emit(damage, spread_radius)
-
-func _on_revolver_fired(damage: int, spread_radius: float) -> void:
-	gun_fired.emit(damage, spread_radius)
-
-func _on_shotgun_fired(damage: int, spread_radius: float) -> void:
-	gun_fired.emit(damage, spread_radius)

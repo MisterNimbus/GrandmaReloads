@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dh4el70ab6fj6"]
+
+[ext_resource type="Script" uid="uid://bmoltmtcnm1xd" path="res://scripts/gun.gd" id="1_10nmq"]
+
+[node name="GunBase" type="Node2D" unique_id=1011224488]
+script = ExtResource("1_10nmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1766233589]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=359504950]

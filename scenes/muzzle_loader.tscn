@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://d0oemknqdu7mm"]
+
+[ext_resource type="PackedScene" uid="uid://dh4el70ab6fj6" path="res://scenes/gun_base.tscn" id="1_7oefl"]
+[ext_resource type="Script" uid="uid://c2vbs05oxey3u" path="res://scripts/muzzleloader.gd" id="2_jjwa6"]
+[ext_resource type="Texture2D" uid="uid://depbp7blcxgrg" path="res://assets/sprites/Muzzleloader/straight.png" id="3_bobuc"]
+[ext_resource type="Texture2D" uid="uid://dq4yrw4u6go5i" path="res://assets/sprites/Muzzleloader/left.png" id="4_wje8q"]
+[ext_resource type="Texture2D" uid="uid://c33ualbicren8" path="res://assets/sprites/Muzzleloader/right.png" id="5_13323"]
+[ext_resource type="Texture2D" uid="uid://demtu3ibckuh1" path="res://assets/sprites/placeholders/Crosshair1.png" id="6_h807p"]
+[ext_resource type="AudioStream" uid="uid://xt1ptiiqbblb" path="res://assets/sounds/Musket Fires/musket-fire0.mp3" id="7_5ikgg"]
+[ext_resource type="AudioStream" uid="uid://c3ayogwocigc7" path="res://assets/sounds/Musket Fires/musket-fire1.mp3" id="8_ppr6t"]
+[ext_resource type="AudioStream" uid="uid://bn6m8t36jw2q8" path="res://assets/sounds/Musket Fires/musket-fire2.mp3" id="9_vtxlb"]
+[ext_resource type="AudioStream" uid="uid://kehemds6imhg" path="res://assets/sounds/Musket Fires/musket-fire3.mp3" id="10_khjux"]
+[ext_resource type="AudioStream" uid="uid://7kl4bmcb56rf" path="res://assets/sounds/Musket Fires/musket-fire4.mp3" id="11_sjaox"]
+[ext_resource type="AudioStream" uid="uid://dhnp0uyoda5eg" path="res://assets/sounds/Musket Fires/musket-fire5.mp3" id="12_vuwwe"]
+[ext_resource type="AudioStream" uid="uid://vfnmd0kgu3yg" path="res://assets/sounds/Musket Fires/musket-fire6.mp3" id="13_kstbi"]
+[ext_resource type="AudioStream" uid="uid://che81y00484fy" path="res://assets/sounds/pistol-trigger.mp3" id="14_jofa8"]
+[ext_resource type="PackedScene" uid="uid://ci6rhe1fduwba" path="res://scenes/musket_reload_minigame.tscn" id="15_esyip"]
+[ext_resource type="Texture2D" uid="uid://di4nvfwuvwg2u" path="res://assets/sprites/spark.png" id="16_13323"]
+[ext_resource type="Texture2D" uid="uid://6l5nmelpqbcp" path="res://assets/sprites/smoke.png" id="17_h807p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a8y0u"]
+streams_count = 7
+stream_0/stream = ExtResource("7_5ikgg")
+stream_1/stream = ExtResource("8_ppr6t")
+stream_2/stream = ExtResource("9_vtxlb")
+stream_3/stream = ExtResource("10_khjux")
+stream_4/stream = ExtResource("11_sjaox")
+stream_5/stream = ExtResource("12_vuwwe")
+stream_6/stream = ExtResource("13_kstbi")
+
+[sub_resource type="Curve" id="Curve_h807p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.43151394, 0.99539167), 0.0, 0.0, 0, 0, Vector2(0.85993826, 0.07066047), -1.2678205, -1.2678205, 0, 0, Vector2(1, 0.007680416), -0.15583374, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_13323"]
+curve = SubResource("Curve_h807p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13323"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(1, -0.47, 0)
+spread = 85.277
+initial_velocity_min = 38.87
+initial_velocity_max = 128.56999
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -34.29
+linear_accel_max = -34.29
+scale_curve = SubResource("CurveTexture_13323")
+
+[sub_resource type="Curve" id="Curve_vtxlb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.32749745, 0.38556063), 0.0, 0.0, 0, 0, Vector2(0.40061793, 0.38863283), 0.0, 0.0, 0, 0, Vector2(0.554068, 0.23809516), -1.0813752, -1.0813752, 0, 0, Vector2(0.7765191, 0.06451607), 0.0, 0.0, 0, 0, Vector2(0.9495366, 0.0015360117), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.05736864, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_sjaox"]
+curve = SubResource("Curve_vtxlb")
+
+[sub_resource type="Curve" id="Curve_kstbi"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 14.132103), 0.0, 0.0, 0, 0, Vector2(0.38928938, 66.820274), -77.56061, -77.56061, 0, 0, Vector2(0.7651905, 13.51767), 0.0, 0.0, 0, 0, Vector2(1, 100), 922.0462, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jofa8"]
+curve = SubResource("Curve_kstbi")
+
+[sub_resource type="Curve" id="Curve_esyip"]
+_limits = [0.0, 17.54, 0.0, 1.0]
+_data = [Vector2(0, 0.518797), 0.0, -11.423438, 0, 0, Vector2(1e-05, 0.42201614), 0.0, 0.0, 0, 0, Vector2(0.10504635, 1.2663288), 8.086391, 8.086391, 0, 0, Vector2(0.5602472, 3.502612), 4.6040335, 4.6040335, 0, 0, Vector2(1, 5.7119513), 14.457862, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_dppmb"]
+curve = SubResource("Curve_esyip")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x6o27"]
+lifetime_randomness = 0.03
+particle_flag_disable_z = true
+velocity_pivot = Vector3(0, 0.07, 0)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 21.76
+initial_velocity_max = 40.35
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -22.860003
+linear_accel_max = -2.2351742e-06
+damping_min = 1.264
+damping_max = 1.264
+damping_curve = SubResource("CurveTexture_jofa8")
+scale_max = 4.5699997
+scale_curve = SubResource("CurveTexture_dppmb")
+scale_over_velocity_max = 78.57
+alpha_curve = SubResource("CurveTexture_sjaox")
+
+[sub_resource type="Curve" id="Curve_5ikgg"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.37693098, 64.51613), 0.0, 0.0, 0, 0, Vector2(1, 90.01536), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vtxlb"]
+curve = SubResource("Curve_5ikgg")
+
+[sub_resource type="Curve" id="Curve_ppr6t"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(0.45623067, 1.5), 0.0, 0.0, 0, 0, Vector2(0.95365596, 0.050691247), -1.2678205, -1.2678205, 0, 0, Vector2(1, 0.007680416), -0.15583374, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_khjux"]
+curve = SubResource("Curve_ppr6t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sjaox"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 17.149
+initial_velocity_min = 112.729996
+initial_velocity_max = 244.22
+gravity = Vector3(0, 0, 0)
+damping_curve = SubResource("CurveTexture_vtxlb")
+scale_curve = SubResource("CurveTexture_khjux")
+
+[sub_resource type="Curve" id="Curve_jbj1t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4346035, 0.48079872), 0.0, 0.0, 0, 0, Vector2(0.48609686, 0.44854063), -2.5291526, -2.5291526, 0, 0, Vector2(0.554068, 0.23809516), -1.0813752, -1.0813752, 0, 0, Vector2(0.7765191, 0.06451607), 0.0, 0.0, 0, 0, Vector2(0.9495366, 0.0015360117), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.05736864, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_jkv2x"]
+curve = SubResource("Curve_jbj1t")
+
+[sub_resource type="Curve" id="Curve_vuwwe"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 14.132103), 0.0, 0.0, 0, 0, Vector2(0.38928938, 66.820274), -77.56061, -77.56061, 0, 0, Vector2(0.7651905, 13.51767), 0.0, 0.0, 0, 0, Vector2(1, 100), 922.0462, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ppr6t"]
+curve = SubResource("Curve_vuwwe")
+
+[sub_resource type="Curve" id="Curve_13323"]
+_limits = [0.0, 17.54, 0.0, 1.0]
+_data = [Vector2(0, 0.518797), 0.0, -11.423438, 0, 0, Vector2(1e-05, 0.42201614), 0.0, 0.0, 0, 0, Vector2(0.10504635, 1.2663288), 8.086391, 8.086391, 0, 0, Vector2(0.5602472, 3.502612), 4.6040335, 4.6040335, 0, 0, Vector2(1, 5.7119513), 14.457862, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_a8y0u"]
+curve = SubResource("Curve_13323")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trceg"]
+lifetime_randomness = 0.03
+particle_flag_disable_z = true
+velocity_pivot = Vector3(0, 0.37, 0)
+direction = Vector3(0, -1, 0)
+spread = 16.13
+initial_velocity_min = 57.719997
+initial_velocity_max = 260.96
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -22.860003
+linear_accel_max = -2.2351742e-06
+damping_min = 1.264
+damping_max = 1.264
+damping_curve = SubResource("CurveTexture_ppr6t")
+scale_max = 4.5699997
+scale_curve = SubResource("CurveTexture_a8y0u")
+scale_over_velocity_max = 78.57
+alpha_curve = SubResource("CurveTexture_jkv2x")
+
+[node name="MuzzleLoader" unique_id=1011224488 node_paths=PackedStringArray("flash_pan_particles", "muzzle_particles") instance=ExtResource("1_7oefl")]
+script = ExtResource("2_jjwa6")
+flash_pan_particles = [NodePath("Sprite2D/triggerParticles"), NodePath("Sprite2D/TriggerSmokeParticles")]
+muzzle_particles = [NodePath("Sprite2D/MuzzleParticles2"), NodePath("Sprite2D/MuzzleParticles")]
+gun_id = "muzzleloader"
+max_ammo = 1
+damage = 25
+view_model_straight_texture = ExtResource("3_bobuc")
+view_model_left_texture = ExtResource("4_wje8q")
+view_model_right_texture = ExtResource("5_13323")
+crosshair_texture = ExtResource("6_h807p")
+shoot_sound = SubResource("AudioStreamRandomizer_a8y0u")
+empty_click_sound = ExtResource("14_jofa8")
+reload_minigame_scene = ExtResource("15_esyip")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1766233589]
+z_index = 2
+position = Vector2(81, 0)
+rotation = 1.5707964
+texture = ExtResource("3_bobuc")
+
+[node name="triggerParticles" type="GPUParticles2D" parent="Sprite2D" index="0" unique_id=486944506]
+z_index = 3
+texture_filter = 1
+position = Vector2(13, 9)
+emitting = false
+amount = 42
+texture = ExtResource("16_13323")
+lifetime = 1.6300000000000001
+interp_to_end = 0.008
+one_shot = true
+speed_scale = 2.7
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_13323")
+
+[node name="TriggerSmokeParticles" type="GPUParticles2D" parent="Sprite2D" index="1" unique_id=647515547]
+z_index = 3
+texture_filter = 1
+position = Vector2(14, 9)
+emitting = false
+amount = 5
+texture = ExtResource("17_h807p")
+lifetime = 5.6
+one_shot = true
+speed_scale = 4.41
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_x6o27")
+
+[node name="MuzzleParticles2" type="GPUParticles2D" parent="Sprite2D" index="2" unique_id=866009810]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-6.9064e-06, -158)
+emitting = false
+amount = 79
+texture = ExtResource("16_13323")
+lifetime = 3.3299999999999996
+one_shot = true
+speed_scale = 4.9
+explosiveness = 1.0
+randomness = 0.19
+process_material = SubResource("ParticleProcessMaterial_sjaox")
+
+[node name="MuzzleParticles" type="GPUParticles2D" parent="Sprite2D" index="3" unique_id=266623232]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(-6.9064e-06, -158)
+emitting = false
+amount = 50
+texture = ExtResource("17_h807p")
+lifetime = 5.6
+one_shot = true
+speed_scale = 4.41
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_trceg")
