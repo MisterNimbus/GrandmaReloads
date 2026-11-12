@@ -30,11 +30,10 @@ stretch_mode = 3
 [node name="TargetManager" parent="." unique_id=1780119017 instance=ExtResource("2_a8y0u")]
 
 [node name="WeaponManager" parent="." unique_id=211571345 node_paths=PackedStringArray("weapons") instance=ExtResource("2_0wfyh")]
-position = Vector2(1024, 970)
+position = Vector2(1024, 1002)
 weapons = [NodePath("MuzzleLoader"), NodePath("Shotgun"), NodePath("Revolver")]
 
 [node name="MuzzleLoader" parent="WeaponManager" unique_id=1011224488 instance=ExtResource("5_trceg")]
-max_ammo = 27
 ignition_delay = 0.35
 recoil_distance = 30.0
 max_recoil_distance = 35.0
